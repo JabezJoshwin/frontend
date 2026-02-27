@@ -1,6 +1,7 @@
 // app/layout.tsx
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
+import ConvexClientProvider from "../ConvexClientProvider";
 import './globals.css'
 
 export default function RootLayout({
@@ -16,7 +17,11 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className="bg-black text-white">{children}</body>
+        <body className="bg-black text-white">
+          <ConvexClientProvider>
+            {children}
+          </ConvexClientProvider>
+        </body>
       </html>
     </ClerkProvider>
   )
